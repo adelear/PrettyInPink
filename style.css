@@ -318,3 +318,21 @@ body {
     max-width: 300px;
   }
 }
+
+/* MAP SECTION */ 
+
+.map-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.map {
+  margin-top: 70px;
+}
+
+/* Forces the map iframe to stretch to full container dimensions */
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
