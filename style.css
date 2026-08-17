@@ -1,0 +1,320 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  background: #fff0f6;
+  color: #3a1025;
+  min-height: 100vh;
+}
+
+/* =========================
+   BANNER
+========================= */
+
+.banner {
+  width: 100%;
+  background: #d63384;
+  color: white;
+  padding: 28px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border-bottom: 5px solid #ff69b4;
+  box-shadow: 0 4px 15px rgba(214, 51, 132, 0.25);
+}
+
+.logo {
+  width: 58px;
+  height: 58px;
+  background: #fff;
+  color: #d63384;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fredoka", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.banner h1 {
+  font-family: "Fredoka", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 55px 25px 80px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-title h2 {
+  font-family: "Fredoka", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #9d174d;
+}
+
+.section-title h2::before,
+.section-title h2::after {
+  color: #ff69b4;
+}
+
+.section-title h2::before {
+  content: "♡ ";
+}
+
+.section-title h2::after {
+  content: " ♡";
+}
+
+.section-title p {
+  color: #8a5a6f;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.7;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* =========================
+   CARD GRID
+========================= */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.artist-card,
+.prize-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(190, 24, 93, 0.12);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.artist-card:hover,
+.prize-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(190, 24, 93, 0.22);
+}
+
+/* =========================
+   CARD IMAGE
+========================= */
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+  background: #fbcfe8;
+}
+
+.pokeball-logo {
+    width: 75%
+}
+
+
+/* =========================
+   CARD INFO
+========================= */
+
+.card-info {
+  padding: 18px;
+}
+
+.artist-name {
+  font-family: "Fredoka", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #831843;
+}
+
+.location {
+  font-size: 14px;
+  font-weight: 500;
+  color: #8a5a6f;
+  margin-bottom: 15px;
+}
+
+.looking-for {
+  border-top: 1px solid #f9d5e5;
+  padding-top: 13px;
+}
+
+.looking-for-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: #c084a3;
+  margin-bottom: 7px;
+}
+
+.looking-for p {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #4a1a32;
+}
+
+/* =========================
+   PRIZE SECTION
+========================= */
+
+.prizes {
+  margin-top: 70px;
+}
+
+.prize-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.prize-title h2 {
+  font-family: "Fredoka", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: #d63384;
+  margin-bottom: 8px;
+}
+
+.prize-title h2::before,
+.prize-title h2::after {
+  color: #ff69b4;
+}
+
+.prize-title h2::before {
+  content: "♡ ";
+}
+
+.prize-title h2::after {
+  content: " ♡";
+}
+
+.prize-title p {
+  color: #8a5a6f;
+  font-weight: 500;
+}
+
+.prize-grid {
+  max-width: 500px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.prize-card {
+  border: 3px solid #ff69b4;
+}
+
+.prize-card .card-info {
+  background: #fff5fa;
+}
+
+.prize-badge {
+  background: #ff69b4;
+  color: #5a0b2e;
+  text-align: center;
+  padding: 8px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .banner {
+    padding: 20px;
+  }
+
+  .banner h1 {
+    font-size: 22px;
+  }
+
+  .logo {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .container {
+    padding: 40px 18px 60px;
+  }
+
+  .section-title h2 {
+    font-size: 26px;
+  }
+
+  .section-title p {
+    font-size: 14px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .prize-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .card-info {
+    padding: 14px;
+  }
+
+  .artist-name {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 430px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prize-grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+}
