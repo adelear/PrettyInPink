@@ -112,8 +112,6 @@ body {
 ========================= */
 
 /*
-  auto-fit automatically decides how many cards fit.
-
   Large screen:
   5 cards may fit.
 
@@ -126,7 +124,7 @@ body {
   Phone:
   2 cards.
 
-  Very narrow phone:
+  SMALL phone:
   1 card.
 */
 
@@ -138,7 +136,6 @@ body {
   align-items: start;
 }
 
-/* Keep cards from becoming ridiculously wide */
 .artist-card,
 .prize-card {
   width: 100%;
@@ -257,9 +254,7 @@ body {
   font-weight: 500;
 }
 
-/*
-  Same responsive behavior for prize cards.
-*/
+
 .prize-grid {
   width: 100%;
   max-width: 600px;
@@ -298,13 +293,15 @@ body {
 .map {
   width: 100%;
   margin-top: 70px;
+  display: flex;
+  justify-content: center;
 }
 
 .map-container {
   width: 100%;
-  height: auto;
   display: flex;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
 }
 
@@ -313,19 +310,34 @@ body {
   width: 100%;
   max-width: 1400px;
   height: auto;
-  object-fit: contain;
+  margin: 0 auto;
 }
 
-/*
-  If you switch the map to an iframe later,
-  these rules will make it responsive too.
-*/
 
 .map-container iframe {
   width: 100%;
   height: min(70vh, 800px);
   min-height: 400px;
   border: 0;
+}
+
+@media (max-width: 500px) {
+  .map {
+    width: 100%;
+    margin-top: 45px;
+  }
+
+  .map-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .map-container img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 /* =========================
@@ -399,10 +411,6 @@ body {
     line-height: 1.6;
   }
 
-  /*
-    On phones, cards will naturally become 2 columns
-    as long as there is enough room.
-  */
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
@@ -442,10 +450,7 @@ body {
     font-size: 26px;
   }
 
-  /*
-    Makes the map fit the phone width rather than
-    creating a giant 100vh section.
-  */
+
   .map {
     width: calc(100% + 24px);
     margin-left: -12px;
@@ -465,7 +470,7 @@ body {
 }
 
 /* =========================
-   VERY SMALL PHONES
+  SMALLER PHONES
 ========================= */
 
 @media (max-width: 340px) {
