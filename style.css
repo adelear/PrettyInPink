@@ -4,6 +4,12 @@
   padding: 0;
 }
 
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Quicksand", sans-serif;
   background: #fff0f6;
@@ -17,6 +23,7 @@ body {
 
 .banner {
   width: 100%;
+  min-width: 100%;
   background: #d63384;
   color: white;
   padding: 28px 40px;
@@ -37,9 +44,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Fredoka", sans-serif;
-  font-size: 25px;
-  font-weight: 700;
   flex-shrink: 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
@@ -52,12 +56,18 @@ body {
   text-transform: uppercase;
 }
 
+.pokeball-logo {
+  width: 75%;
+  height: auto;
+}
+
 /* =========================
    PAGE
 ========================= */
 
 .container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 55px 25px 80px;
 }
@@ -101,18 +111,46 @@ body {
    CARD GRID
 ========================= */
 
+/*
+  auto-fit automatically decides how many cards fit.
+
+  Large screen:
+  5 cards may fit.
+
+  Slightly smaller:
+  4 cards.
+
+  Smaller:
+  3 cards.
+
+  Phone:
+  2 cards.
+
+  Very narrow phone:
+  1 card.
+*/
+
 .card-grid {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
+  align-items: start;
 }
 
+/* Keep cards from becoming ridiculously wide */
 .artist-card,
 .prize-card {
+  width: 100%;
+  max-width: 260px;
+  justify-self: center;
+
   background: white;
   border-radius: 16px;
   overflow: hidden;
+
   box-shadow: 0 5px 18px rgba(190, 24, 93, 0.12);
+
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -135,11 +173,6 @@ body {
   display: block;
   background: #fbcfe8;
 }
-
-.pokeball-logo {
-    width: 75%
-}
-
 
 /* =========================
    CARD INFO
@@ -224,11 +257,17 @@ body {
   font-weight: 500;
 }
 
+/*
+  Same responsive behavior for prize cards.
+*/
 .prize-grid {
-  max-width: 500px;
+  width: 100%;
+  max-width: 600px;
   margin: 0 auto;
+
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 260px));
+  justify-content: center;
   gap: 25px;
 }
 
@@ -253,86 +292,194 @@ body {
 }
 
 /* =========================
-   RESPONSIVE
+   MAP
 ========================= */
 
-@media (max-width: 1000px) {
-  .card-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.map {
+  width: 100%;
+  margin-top: 70px;
 }
 
-@media (max-width: 650px) {
+.map-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.map-container img {
+  display: block;
+  width: 100%;
+  max-width: 1400px;
+  height: auto;
+  object-fit: contain;
+}
+
+/*
+  If you switch the map to an iframe later,
+  these rules will make it responsive too.
+*/
+
+.map-container iframe {
+  width: 100%;
+  height: min(70vh, 800px);
+  min-height: 400px;
+  border: 0;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
   .banner {
-    padding: 20px;
+    padding: 22px 20px;
   }
 
   .banner h1 {
-    font-size: 22px;
-  }
-
-  .logo {
-    width: 48px;
-    height: 48px;
-    font-size: 20px;
+    font-size: 27px;
   }
 
   .container {
-    padding: 40px 18px 60px;
+    padding: 45px 20px 60px;
+  }
+
+  .card-grid {
+    gap: 16px;
+  }
+
+  .artist-card,
+  .prize-card {
+    max-width: 240px;
+  }
+
+  .map {
+    margin-top: 50px;
+  }
+}
+
+/* =========================
+   PHONE
+========================= */
+
+@media (max-width: 500px) {
+  .banner {
+    width: 100%;
+    padding: 18px 12px;
+    gap: 10px;
+  }
+
+  .banner h1 {
+    font-size: 21px;
+    letter-spacing: 0.5px;
+  }
+
+  .logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 35px 12px 50px;
+  }
+
+  .section-title {
+    margin-bottom: 25px;
   }
 
   .section-title h2 {
-    font-size: 26px;
+    font-size: 25px;
   }
 
   .section-title p {
     font-size: 14px;
+    line-height: 1.6;
   }
 
+  /*
+    On phones, cards will naturally become 2 columns
+    as long as there is enough room.
+  */
   .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 
-  .prize-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+  .artist-card,
+  .prize-card {
+    max-width: none;
   }
 
   .card-info {
-    padding: 14px;
+    padding: 12px;
   }
 
   .artist-name {
     font-size: 17px;
   }
-}
 
-@media (max-width: 430px) {
-  .card-grid {
-    grid-template-columns: 1fr;
+  .location {
+    font-size: 12px;
+  }
+
+  .looking-for p {
+    font-size: 12px;
+  }
+
+  .prizes {
+    margin-top: 50px;
   }
 
   .prize-grid {
-    grid-template-columns: 1fr;
-    max-width: 300px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .prize-title h2 {
+    font-size: 26px;
+  }
+
+  /*
+    Makes the map fit the phone width rather than
+    creating a giant 100vh section.
+  */
+  .map {
+    width: calc(100% + 24px);
+    margin-left: -12px;
+    margin-top: 45px;
+  }
+
+  .map-container img {
+    width: 100%;
+    height: auto;
+  }
+
+  .map-container iframe {
+    width: 100%;
+    height: 55vh;
+    min-height: 300px;
   }
 }
 
-/* MAP SECTION */ 
+/* =========================
+   VERY SMALL PHONES
+========================= */
 
-.map-container {
-    width: 100vw;
-    height: 100vh;
-}
+@media (max-width: 340px) {
+  .card-grid,
+  .prize-grid {
+    grid-template-columns: 1fr;
+  }
 
-.map {
-  margin-top: 70px;
-}
+  .artist-card,
+  .prize-card {
+    max-width: 260px;
+  }
 
-/* Forces the map iframe to stretch to full container dimensions */
-.map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
+  .banner h1 {
+    font-size: 18px;
+  }
 }
